@@ -39,4 +39,7 @@ public class ChatRoomRepository {
     }
 
 
+    public List<ChatRoomDto> findAll() {
+        return datum;
+    }
 }
