@@ -82,6 +82,24 @@ public class Rq {
         return value;
     }
 
+
+    public long getLongParam(String paramName, long defaultValue) {
+
+        String value = req.getParameter(paramName);
+
+        if(value == null) {
+            return defaultValue;
+        }
+
+        try {
+            return Long.parseLong(value);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+
+    }
+
+
     public String getActionPath() {
         String[] bits = req.getRequestURI().split("/");
 
@@ -176,6 +194,7 @@ public class Rq {
     public void failJson(Object data) {
         json(data, "F-1", "실패");
     }
+
 
 }
 
