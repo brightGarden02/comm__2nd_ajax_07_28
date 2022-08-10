@@ -35,7 +35,7 @@
 
             <div class="form-control w-full max-w-sm">
                 <label class="label">
-                    <span class="label-text">주제</span>
+                    <span class="label-text">채팅방 주제</span>
                 </label>
                 <div>
                     <input name="body" type="text" maxlength="50" placeholder="채팅방 주제를 적어주세요." class="input input-bordered w-full" />
