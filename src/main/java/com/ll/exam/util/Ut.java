@@ -24,10 +24,10 @@ public class Ut {
             }
         }
 
-        public static Object toObj(String jsonStr, Class cls, Object defaultValue) {
+        public static <T> T toObj(String jsonStr, Class<T> cls, T defaultValue) {
 
             try {
-                return om.readValue(jsonStr, cls);
+                return (T) om.readValue(jsonStr, cls);
             } catch (JsonProcessingException e){
                 return defaultValue;
             }
