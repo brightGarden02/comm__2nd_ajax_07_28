@@ -97,10 +97,10 @@ public class AppTest {
         articleDtoMap.put("최신", new ArticleDto(2, "제목2", "내용2"));
         String jsonStr = Ut.json.toStr(articleDtoMap, "");
 
-        Map<String, ArticleDto> articleDtoMapFromJson = Ut.json.toMap(jsonStr, new TypeReference<>() {
+        Map<String, ArticleDto> articleDtoMapFromJson = Ut.json.toObj(jsonStr, new TypeReference<>() {
         }, null);
 
-        System.out.println(jsonStr);
+        assertThat(articleDtoMapFromJson).isEqualTo(articleDtoMap);
 
     }
 
