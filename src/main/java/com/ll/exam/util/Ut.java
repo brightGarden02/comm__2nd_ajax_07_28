@@ -7,7 +7,7 @@ public class Ut {
 
     public static class json {
 
-        public static String toJsonStr(Object obj, String defaultValue){
+        public static String toStr(Object obj, String defaultValue){
 
             ObjectMapper om = new ObjectMapper();
 

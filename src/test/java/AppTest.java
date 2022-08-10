@@ -18,7 +18,7 @@ public class AppTest {
 
         ArticleDto articleDto = new ArticleDto(1, "제목", "내용");
 
-        String jsonStr = Ut.json.toJsonStr(articleDto, "");
+        String jsonStr = Ut.json.toStr(articleDto, "");
         assertThat(jsonStr).isNotBlank();
         assertThat(jsonStr).isEqualTo("""
                 {"id":1,"title":"제목","body":"내용"}
