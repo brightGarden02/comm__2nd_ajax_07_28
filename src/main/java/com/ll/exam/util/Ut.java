@@ -5,11 +5,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Ut {
 
+
+
     public static class json {
 
-        public static String toStr(Object obj, String defaultValue){
+        private static ObjectMapper om;
 
-            ObjectMapper om = new ObjectMapper();
+        static {
+            om = new ObjectMapper();
+        }
+
+        public static String toStr(Object obj, String defaultValue){
 
             try {
                 return om.writeValueAsString(obj);
@@ -17,5 +23,15 @@ public class Ut {
                 return defaultValue;
             }
         }
+
+        public static Object toObj(String jsonStr, Class cls, Object defaultValue) {
+
+            try {
+                return om.readValue(jsonStr, cls);
+            } catch (JsonProcessingException e){
+                return defaultValue;
+            }
+        }
+
     }
 }
