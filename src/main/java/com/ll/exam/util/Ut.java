@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
+import java.util.Map;
 
 public class Ut {
 
@@ -40,6 +41,14 @@ public class Ut {
             try {
                 return om.readValue(jsonStr, typeReference);
             } catch (JsonProcessingException e) {
+                return defaultValue;
+            }
+        }
+
+        public static <K, V> Map<K, V> toMap(String jsonStr, TypeReference<Map<K, V>> typeReference, Map<K, V> defaultValue) {
+            try {
+                return om.readValue(jsonStr, typeReference);
+            } catch (JsonProcessingException e){
                 return defaultValue;
             }
         }

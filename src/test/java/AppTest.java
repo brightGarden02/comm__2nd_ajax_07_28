@@ -19,6 +19,7 @@ public class AppTest {
         assertThat(rs).isEqualTo(30);
     }
 
+    // ArticleDto => JS객체(단순)
     @Test
     void ObjectMapper__articleDtoToJsonStr() {
 
@@ -31,6 +32,7 @@ public class AppTest {
                 """.trim());
     }
 
+    // List<ArticleDto> => JS배열
     @Test
     void ObjectMapper__articleDtoListToJsonStr() {
         ArrayList<ArticleDto> articleDtos = new ArrayList<>();
@@ -43,6 +45,7 @@ public class AppTest {
                 """.trim());
     }
 
+    // Map<String, ArticleDto> => JS객체(복잡)
     @Test
     void ObjectMapper__articleDtoMapToJsonStr() {
         Map<String, ArticleDto> articleDtoMap = new HashMap<>();
@@ -56,6 +59,7 @@ public class AppTest {
 
 
 
+    // JS객체(단순) => ArticleDto
     @Test
     void ObjectMapper__jsonStrToObj() {
 
@@ -68,6 +72,7 @@ public class AppTest {
         assertThat(articleDtoOrigin).isEqualTo(articleDtoFromJson);
     }
 
+    // JS배열 => List<ArticleDto>
     @Test
     void ObjectMapper__jsonStrToArticleDtoList() {
 
@@ -82,5 +87,21 @@ public class AppTest {
         assertThat(articleDtosFromJson).isEqualTo(articleDtos);
     }
 
+
+    // JS객체(복잡) => Map<String, ArticleDto>
+    @Test
+    void ObjectMapper__jsonStrToArticleDtoMap() {
+
+        Map<String, ArticleDto> articleDtoMap = new HashMap<>();
+        articleDtoMap.put("가장오래된", new ArticleDto(1, "제목1", "내용1"));
+        articleDtoMap.put("최신", new ArticleDto(2, "제목2", "내용2"));
+        String jsonStr = Ut.json.toStr(articleDtoMap, "");
+
+        Map<String, ArticleDto> articleDtoMapFromJson = Ut.json.toMap(jsonStr, new TypeReference<>() {
+        }, null);
+
+        System.out.println(jsonStr);
+
+    }
 
 }
