@@ -30,7 +30,23 @@
 <section class="mt-5">
     <div class="container px-3 mx-auto">
         <h1 class="font-bold text-lg">테스트</h1>
-        <button class="btn btn-xs">최신글 가져오기</button>
+        <script>
+            function Article__loadLatest() {
+                fetch('/usr/article/getArticles/free')
+                    .then(data => data.json()) // JSON을 파싱
+                    .then(responseData => {
+                        console.log(responseData);
+
+                        // jquery 찾기 : $
+                        $('.place-1').append(responseData.resultCode + "<br />");
+                    });
+            }
+        </script>
+        <button onclick="Article__loadLatest();" class="btn btn-xs">최신글 가져오기</button>
+
+        <div class="place-1 border-2 border-[red] min-h-[500px]">
+
+        </div>
     </div>
 </section>
 
