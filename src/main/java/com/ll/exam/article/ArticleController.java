@@ -1,5 +1,6 @@
 package com.ll.exam.article;
 
+import com.ll.exam.ResultData;
 import com.ll.exam.Rq;
 import com.ll.exam.article.dto.ArticleDto;
 import com.ll.exam.util.Ut;
@@ -140,13 +141,7 @@ public class ArticleController {
     public void getArticles(Rq rq) {
         List<ArticleDto> articleDtos = articleService.findAll();
 
-        Map<String, Object> resultData = new LinkedHashMap<>();
-        resultData.put("resultCode", "S-1");
-        resultData.put("msg", "성공");
-        resultData.put("data", articleDtos);
-
-        Ut.mapOf("resultCode", "S-1", "msg", "성공", "data", articleDtos);
-
+        ResultData<List<ArticleDto>> resultData = new ResultData("성공", "S-1", articleDtos);
         rq.json(resultData);
     }
 }
