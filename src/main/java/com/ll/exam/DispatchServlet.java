@@ -2,6 +2,7 @@ package com.ll.exam;
 
 
 import com.ll.exam.article.ArticleController;
+import com.ll.exam.chat.ChatController;
 import com.ll.exam.member.MemberController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,12 +22,8 @@ public class DispatchServlet extends HttpServlet {
 
         MemberController memberController = new MemberController();
         ArticleController articleController = new ArticleController();
+        ChatController chatController = new ChatController();
 
-
-        // getRequestURI는
-        // http://localhost:8081/usr/article/list/free?page=1 에서
-        // /usr/article/list/free 부분만 가져온다.
-        String url = req.getRequestURI();
 
         switch (rq.getRouteMethod()) {
             case "GET":
