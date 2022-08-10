@@ -71,7 +71,7 @@ public class AppTest {
 
         assertThat(articleDtoOrigin).isEqualTo(articleDtoFromJson);
     }
-
+/*
     // JS배열 => List<ArticleDto>
     @Test
     void ObjectMapper__jsonStrToArticleDtoList() {
@@ -103,5 +103,5 @@ public class AppTest {
         assertThat(articleDtoMapFromJson).isEqualTo(articleDtoMap);
 
     }
-
+*/
 }
