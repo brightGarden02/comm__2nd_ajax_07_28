@@ -43,7 +43,7 @@
             }
         </script>
 
-        <form onsubmit="ChatMessageSave__submitForm(this); return false;" method="POST" action="/usr/chat/writeMessage/2">
+            <form onsubmit="ChatMessageSave__submitForm(this); return false;" method="POST" action="/usr/chat/writeMessage/${room.id}">
             <input autofocus name="body" type="text" placeholder="메세지를 입력해주세요." class="input input-bordered" />
             <button type="submit" value="" class="btn btn-outline btn-primary">
                 작성
