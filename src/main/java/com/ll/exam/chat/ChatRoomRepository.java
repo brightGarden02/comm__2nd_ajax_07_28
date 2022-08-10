@@ -56,7 +56,21 @@ public class ChatRoomRepository {
     public void modify(long id, String title, String body) {
         ChatRoomDto chatRoomDto = findById(id);
 
+        if ( chatRoomDto == null ) {
+            return;
+        }
+
         chatRoomDto.setTitle(title);
         chatRoomDto.setBody(body);
+    }
+
+    public void deleteRoom(long id) {
+        ChatRoomDto chatRoomDto = findById(id);
+
+        if ( chatRoomDto == null ) {
+            return;
+        }
+
+        datum.remove(chatRoomDto);
     }
 }

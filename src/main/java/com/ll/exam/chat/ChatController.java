@@ -98,4 +98,24 @@ public class ChatController {
         rq.replace("/usr/chat/room/%d".formatted(id), "%d번 채팅방이 수정되었습니다.".formatted(id));
 
     }
+
+    public void deleteRoom(Rq rq) {
+        long id = rq.getLongPathValueByIndex(0, 0);
+
+        if (id == 0) {
+            rq.historyBack("번호를 입력해주세요.");
+            return;
+        }
+
+        ChatRoomDto chatRoomDto = chatService.findRoomById(id);
+
+        if (chatRoomDto == null) {
+            rq.historyBack("해당 글이 존재하지 않습니다.");
+            return;
+        }
+
+        chatService.deleteRoom(id);
+
+        rq.replace("/usr/chat/roomList", "%d번 채팅방이 삭제되었습니다.".formatted(id));
+    }
 }
