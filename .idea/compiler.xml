@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="community_exam_2022_07_21_second" />
+        <module name="comm__2nd_ajax_07_28" />
       </profile>
     </annotationProcessing>
   </component>
