@@ -27,4 +27,12 @@
     </div>
 </section>
 
+<section class="mt-5">
+    <div class="container px-3 mx-auto">
+        <h1 class="font-bold text-lg">테스트</h1>
+        <button class="btn btn-xs">최신글 가져오기</button>
+    </div>
+</section>
+
+
 <%@ include file="../common/foot.jspf"%>
