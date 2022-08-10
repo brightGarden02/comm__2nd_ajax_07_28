@@ -71,6 +71,9 @@ public class DispatchServlet extends HttpServlet {
                     case "/usr/article/delete":
                         articleController.doDelete(rq);
                         break;
+                    case "/usr/chat/room":
+                        chatController.showRoom(rq);
+                        break;
                     case "/usr/article/modify":
                         articleController.doModify(rq);
                         break;
@@ -78,6 +81,9 @@ public class DispatchServlet extends HttpServlet {
                 break;
             case "DELETE":
                 switch (rq.getActionPath()) {
+                    case "/usr/chat/writeMessage":
+                        chatController.doWriteMessage(rq);
+                        break;
                     case "/usr/chat/deleteRoom":
                         chatController.deleteRoom(rq);
                         break;
