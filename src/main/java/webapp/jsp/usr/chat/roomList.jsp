@@ -15,8 +15,10 @@
                             ${room.title}
                         #${room.body}
                     </a>
-                    <a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;" class="hover:underline hover:text-[red] mr-2" href="/usr/chat/delete/${room.id}?_method=DELETE">삭제</a>
-                    <a class="hover:underline hover:text-[red]" href="/usr/chat/modify/${room.id}">수정</a>
+                    <a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;" class="hover:underline hover:text-[red] mr-2" href="/usr/chat/deleteRoom/${room.id}?_method=DELETE">삭제</a>
+                    <a class="hover:underline hover:text-[red]" href="/usr/chat/modifyRoom/${room.id}">수정</a>
+
+
                 </li>
             </c:forEach>
         </ul>

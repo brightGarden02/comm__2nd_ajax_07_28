@@ -4,13 +4,10 @@ package com.ll.exam;
 import com.ll.exam.article.ArticleController;
 import com.ll.exam.chat.ChatController;
 import com.ll.exam.member.MemberController;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
 
 @WebServlet("/usr/*")
 public class DispatchServlet extends HttpServlet {
@@ -29,7 +26,10 @@ public class DispatchServlet extends HttpServlet {
             case "GET":
                 switch (rq.getActionPath()){
                     case "/usr/chat/createRoom":
-                        chatController.createRoom(rq);
+                        chatController.showCreateRoom(rq);
+                        break;
+                    case "/usr/chat/modifyRoom":
+                        chatController.showModifyRoom(rq);
                         break;
                     case "/usr/chat/roomList":
                         chatController.showRoomList(rq);
@@ -61,6 +61,9 @@ public class DispatchServlet extends HttpServlet {
                 switch (rq.getActionPath()){
                     case "/usr/chat/createRoom":
                         chatController.doCreateRoom(rq);
+                        break;
+                    case "/usr/chat/modifyRoom":
+                        chatController.doModifyRoom(rq);
                         break;
                     case "/usr/article/write":
                         articleController.doWrite(rq);

@@ -42,4 +42,21 @@ public class ChatRoomRepository {
     public List<ChatRoomDto> findAll() {
         return datum;
     }
+
+    public ChatRoomDto findById(long id) {
+        for (ChatRoomDto chatRoomDto : datum) {
+            if (chatRoomDto.getId() == id) {
+                return chatRoomDto;
+            }
+        }
+
+        return null;
+    }
+
+    public void modify(long id, String title, String body) {
+        ChatRoomDto chatRoomDto = findById(id);
+
+        chatRoomDto.setTitle(title);
+        chatRoomDto.setBody(body);
+    }
 }
