@@ -158,11 +158,24 @@ public class Rq {
         return req.getMethod();
     }
 
-    public void json(Object data) {
+    public void json(Object resultData) {
         resp.setContentType("application/json; charset-utf-8");
 
-        String jsonStr = Ut.json.toStr(data, "");
+        String jsonStr = Ut.json.toStr(resultData, "");
         println(jsonStr);
     }
+
+    public void json(Object data, String resultCode, String msg) {
+        json(new ResultData<>(resultCode, msg, data));
+    }
+
+    public void successJson(Object data) {
+        json(data, "S-1", "성공");
+    }
+
+    public void failJson(Object data) {
+        json(data, "F-1", "실패");
+    }
+
 }
 
