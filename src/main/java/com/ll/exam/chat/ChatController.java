@@ -140,9 +140,28 @@ public class ChatController {
 
     public void doWriteMessage(Rq rq) {
         long roomId = rq.getLongPathValueByIndex(0, -1);
+
+        if (roomId == -1) {
+            rq.historyBack("채팅방 번호를 입력해주세요.");
+            return;
+        }
+
+        ChatRoomDto chatRoom = chatService.findRoomById(roomId);
+
+        if (chatRoom == null) {
+            rq.historyBack("존재하지 않는 채팅방 입니다.");
+            return;
+        }
+
         String body = rq.getParam("body", "");
 
-        rq.println("채팅방 번호 : %d<br />".formatted(roomId));
-        rq.println("채팅메세지 : %s<br />".formatted(body));
+        if (body.trim().length() == 0) {
+            rq.historyBack("내용을 입력해주세요.");
+            return;
+        }
+
+        chatService.writeMessage(roomId, body);
+
+        rq.replace("/usr/chat/room/%d".formatted(roomId), "메세지가 등록되었습니다.");
     }
 }
