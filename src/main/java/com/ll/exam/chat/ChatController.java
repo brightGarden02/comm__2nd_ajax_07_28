@@ -1,6 +1,7 @@
 package com.ll.exam.chat;
 
 import com.ll.exam.Rq;
+import com.ll.exam.chat.dto.ChatMessageDto;
 import com.ll.exam.chat.dto.ChatRoomDto;
 
 import java.util.List;
@@ -127,14 +128,18 @@ public class ChatController {
             return;
         }
 
-        ChatRoomDto chatRoom = chatService.findRoomById(id);
+        ChatRoomDto chatRoomDto = chatService.findRoomById(id);
+        List<ChatMessageDto> chatMessageDtos = chatService.findMessagesByRoomId(chatRoomDto.getId());
 
-        if ( chatRoom == null ) {
+
+        if ( chatRoomDto == null ) {
             rq.historyBack("존재하지 않는 채팅방 입니다.");
             return;
         }
 
-        rq.setAttr("room", chatRoom);
+        rq.setAttr("room", chatRoomDto);
+        rq.setAttr("messages", chatMessageDtos);
+
         rq.view("usr/chat/room");
     }
 

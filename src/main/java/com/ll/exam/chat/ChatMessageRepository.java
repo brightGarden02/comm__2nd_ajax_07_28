@@ -4,6 +4,7 @@ import com.ll.exam.chat.dto.ChatMessageDto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ChatMessageRepository {
@@ -33,5 +34,12 @@ public class ChatMessageRepository {
         datum.add(newChatMessageDto);
 
         return id;
+    }
+
+    public List<ChatMessageDto> findByRoomId(long roomId) {
+        return datum
+                .stream()
+                .filter(chatMessageDto -> chatMessageDto.getRoomId() == roomId)
+                .collect(Collectors.toList());
     }
 }
