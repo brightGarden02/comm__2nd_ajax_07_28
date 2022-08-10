@@ -104,4 +104,13 @@ public class AppTest {
 
     }
 */
+
+    @Test
+    void mapOf() {
+        Map<String, Object> map = Ut.mapOf("age", 11, "name", "Paul");
+
+        assertThat(map.get("age")).isEqualTo(11);
+        assertThat(map.get("name")).isEqualTo("Paul");
+    }
+
 }

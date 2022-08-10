@@ -141,10 +141,11 @@ public class ArticleController {
         List<ArticleDto> articleDtos = articleService.findAll();
 
         Map<String, Object> resultData = new LinkedHashMap<>();
-
         resultData.put("resultCode", "S-1");
         resultData.put("msg", "성공");
         resultData.put("data", articleDtos);
+
+        Ut.mapOf("resultCode", "S-1", "msg", "성공", "data", articleDtos);
 
         rq.json(resultData);
     }
