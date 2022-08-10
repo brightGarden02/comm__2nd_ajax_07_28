@@ -35,10 +35,14 @@
                 fetch('/usr/article/getArticles/free')
                     .then(data => data.json()) // JSON을 파싱
                     .then(responseData => {
-                        console.log(responseData);
+                        const articleList = responseData.data;
+                        const latestArticle = articleList[articleList.length - 1];
+                        const content = new Date() + " : " + latestArticle.title + "<br />";
 
-                        // jquery 찾기 : $
-                        $('.place-1').append(responseData.resultCode + "<br />");
+                        // $('.place-1').append(content); // 아래로 추가
+                        $('.place-1').prepend(content); // 위로 추가
+                        // $('.place-1').empty().prepend(content); // 기존 내용을 비우고 위로 추가
+
                     });
             }
         </script>
