@@ -11,7 +11,21 @@
             form.body.focus();
             return false;
         }
-        form.submit();
+
+        // fetch 방식이 아닌, jquery 방식
+        $.post(
+            '/usr/chat/writeMessageAjax/${room.id}', // 주소, action
+        {
+            body: form.body.value // 폼 내용, input name, value
+        },
+        function(data) { // 콜백 메서드, 통신이 완료된 후, 실행
+            // data.resultCode
+            // data.msg
+        },
+        'json' // 받은 데이터를 json 으로 해석하겠다.
+    );
+        form.body.value = '';
+        form.body.focus();
     }
 </script>
 

@@ -217,4 +217,12 @@ public class ChatController {
 
         rq.successJson(chatMessageDtos);
     }
+
+    public void doWriteMessageAjax(Rq rq) {
+        // roomId 구하고
+        // body 구하고
+        // 등록
+
+        rq.successJson(null);
+    }
 }
