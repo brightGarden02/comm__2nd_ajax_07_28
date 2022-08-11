@@ -1,14 +1,9 @@
 package com.ll.exam.article;
 
-import com.ll.exam.ResultData;
 import com.ll.exam.Rq;
 import com.ll.exam.article.dto.ArticleDto;
-import com.ll.exam.util.Ut;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class ArticleController {
@@ -32,7 +27,7 @@ public class ArticleController {
         rq.view("usr/article/write");
     }
 
-    public void doWrite(Rq rq) {
+    public void write(Rq rq) {
         String title = rq.getParam("title", "");
         String body = rq.getParam("body", "");
 
@@ -71,7 +66,7 @@ public class ArticleController {
         rq.view("usr/article/detail");
     }
 
-    public void doDelete(Rq rq) {
+    public void delete(Rq rq) {
 
         long id = rq.getLongPathValueByIndex(1, 0);
 
@@ -112,7 +107,7 @@ public class ArticleController {
         rq.view("usr/article/modify");
     }
 
-    public void doModify(Rq rq) {
+    public void modify(Rq rq) {
         long id = rq.getLongPathValueByIndex(1, 0);
 
         if(id == 0){
