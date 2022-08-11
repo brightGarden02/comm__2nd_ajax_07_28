@@ -189,4 +189,32 @@ public class ChatController {
     }
 
 
+    public void getMessages(Rq rq) {
+        long roomId = rq.getLongPathValueByIndex(0, -1);
+
+        if (roomId == -1) {
+            rq.failJson("채팅방 번호를 입력해주세요.");
+            return;
+        }
+
+        ChatRoomDto chatRoom = chatService.findRoomById(roomId);
+
+        if (chatRoom == null) {
+            rq.failJson("존재하지 않는 채팅방 입니다.");
+            return;
+        }
+
+        long fromId = rq.getLongParam("fromId", -1);
+
+        List<ChatMessageDto> chatMessageDtos = null;
+
+        if ( fromId == -1 ) {
+            chatMessageDtos = chatService.findMessagesByRoomId(roomId);
+        }
+        else {
+            chatMessageDtos = chatService.findMessagesByRoomIdGreaterThan(roomId, fromId);
+        }
+
+        rq.successJson(chatMessageDtos);
+    }
 }
