@@ -114,5 +114,9 @@ public class DispatchServlet extends HttpServlet {
         doGet(req, resp);
     }
 
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
+        doGet(req, resp);
+    }
 
 }
