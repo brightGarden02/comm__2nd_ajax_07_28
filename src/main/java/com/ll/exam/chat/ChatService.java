@@ -35,8 +35,8 @@ public class ChatService {
         chatRoomRepository.deleteRoom(id);
     }
 
-    public void writeMessage(long roomId, String body) {
-        chatMessageRepository.write(roomId, body);
+    public long writeMessage(long roomId, String body) {
+        return chatMessageRepository.write(roomId, body);
     }
 
     public List<ChatMessageDto> findMessagesByRoomId(long id) {

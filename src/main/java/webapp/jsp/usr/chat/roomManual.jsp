@@ -57,7 +57,8 @@
                     <span>메세지 ${message.id} :</span>
                     &nbsp;
                     <span>${message.body}</span>
-                        <a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;" class="hover:underline hover:text-[red] mr-2" href="/usr/chat/deleteMessage/${message.id}?_method=DELETE">삭제</a>
+                    &nbsp;
+                    <a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;" class="hover:underline hover:text-[red] mr-2" href="/usr/chat/deleteMessage/${message.id}?_method=DELETE">삭제</a>
                 </li>
             </c:forEach>
         </ul>
