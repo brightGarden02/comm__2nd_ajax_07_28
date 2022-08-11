@@ -54,4 +54,8 @@ public class ChatService {
     public void deleteMessage(long id) {
         chatMessageRepository.deleteMessage(id);
     }
+
+    public void modifyMessage(long id, String body) {
+        chatMessageRepository.modifyMessage(id, body);
+    }
 }
